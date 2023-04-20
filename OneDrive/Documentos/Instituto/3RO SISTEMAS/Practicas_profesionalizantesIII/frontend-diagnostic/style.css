@@ -1,0 +1,47 @@
+body {
+    
+        
+        align-items: center;
+        height: 100vh;
+       
+    
+    
+    background-color:  rgb(51, 84, 84);
+
+}
+.buttonNumerico
+{
+    color: rgb(255, 255, 255);
+    font-size: 140%;
+    background-color: #000000;
+    border-radius: 7px;
+    width: 30px;
+}
+
+.buttonOperaciones
+{
+    color: rgb(255, 255, 255);
+    font-size: 140%;
+    background-color: #000000;
+    border-radius: 7px;
+    width: 30px;
+}
+
+.buttonIgual
+{
+    color: white;
+    font-size: 140%;
+    background-color: #000000;
+    border-radius: 7px;
+    width: 30px;
+}
+  
+.buttonBorrar
+{
+    color: white;
+    font-size: 100%;
+    background-color: #FF2008;
+    border-radius: 7px;
+    width: 137px;
+    height: 25px;
+}
