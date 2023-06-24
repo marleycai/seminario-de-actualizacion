@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+<meta charset="utf-8" />
+<title>Create User Example</title>
+</head>
+
+<body>
+
+</body>
+
+<script type="text/javascript">
+
+   class CreateUserForm extends HTMLElement {
+     constructor() {
+       super();
+ 
+       this.usernameInput = document.createElement('input');
+       this.usernameInput.type = 'text';
+       this.usernameInput.value = '';
+       this.usernameInput.placeholder = 'Username';
+ 
+       this.passwordInput = document.createElement('input');
+       this.passwordInput.type = 'password';
+       this.passwordInput.value = '';
+       this.passwordInput.placeholder = 'Password';
+ 
+       this.createButton = document.createElement('button');
+       this.createButton.innerText = 'Create User';
+ 
+       this.deleteUsernameInput = document.createElement('input');
+       this.deleteUsernameInput.type = 'text';
+       this.deleteUsernameInput.value = '';
+       this.deleteUsernameInput.placeholder = 'Username to Delete';
+ 
+       this.deletePasswordInput = document.createElement('input');
+       this.deletePasswordInput.type = 'password';
+       this.deletePasswordInput.value = '';
+       this.deletePasswordInput.placeholder = 'Password';
+ 
+       this.deleteButton = document.createElement('button');
+       this.deleteButton.innerText = 'Delete User';
+ 
+       this.authenticateButton = document.createElement('button');
+       this.authenticateButton.innerText = 'Authenticate';
+ 
+       this.authorizeButton = document.createElement('button');
+       this.authorizeButton.innerText = 'Authorize';
+ 
+       this.appendChild(document.createTextNode('Create User'));
+       this.appendChild(this.usernameInput);
+       this.appendChild(this.passwordInput);
+       this.appendChild(this.createButton);
+ 
+       this.appendChild(document.createElement('br'));
+       this.appendChild(document.createElement('br'));
+ 
+       this.appendChild(document.createTextNode('Delete User'));
+       this.appendChild(this.deleteUsernameInput);
+       this.appendChild(this.deletePasswordInput);
+       this.appendChild(this.deleteButton);
+ 
+       this.appendChild(document.createElement('br'));
+       this.appendChild(document.createElement('br'));
+ 
+       this.appendChild(this.authenticateButton);
+       this.appendChild(this.authorizeButton);
+     }
+ 
+     connectedCallback() {
+       this.createButton.onclick = (e) => this.onCreateButtonClick(e);
+       this.deleteButton.onclick = (e) => this.onDeleteButtonClick(e);
+       this.authenticateButton.onclick = (e) => this.onAuthenticateButtonClick(e);
+       this.authorizeButton.onclick = (e) => this.onAuthorizeButtonClick(e);
+     }
+ 
+     async onCreateButtonClick(event) {
+       let formDataObject = {
+         username: this.usernameInput.value,
+         password: this.passwordInput.value,
+       };
+ 
+       let response = await fetch('http://localhost/seminario-de-actualizacion/access-control-module/createUser.php', {
+         method: 'POST',
+         body: JSON.stringify(formDataObject),
+       });
+ 
+       response.json().then((r) => {
+         console.log(r);
+       });
+     }
+ 
+     async onDeleteButtonClick(event) {
+       let formDataObject = {
+         username: this.deleteUsernameInput.value,
+         password: this.deletePasswordInput.value,
+       };
+ 
+       let response = await fetch('http://localhost/seminario-de-actualizacion/access-control-module/deleteUser.php', {
+         method: 'POST',
+         body: JSON.stringify(formDataObject),
+       });
+ 
+       response.json().then((r) => {
+         console.log(r);
+       });
+     }
+ 
+     async onAuthenticateButtonClick(event) {
+       let formDataObject = {
+         username: this.usernameInput.value,
+         password: this.passwordInput.value,
+       };
+ 
+       let response = await fetch('http://localhost/seminario-de-actualizacion/access-control-module/authenticateUser.php', {
+         method: 'POST',
+         body: JSON.stringify(formDataObject),
+       });
+ 
+       response.json().then((r) => {
+         console.log(r);
+       });
+     }
+ 
+     async onAuthorizeButtonClick(event) {
+       let formDataObject = {
+         username: this.usernameInput.value,
+         password: this.passwordInput.value,
+       };
+ 
+       let response = await fetch('http://localhost/seminario-de-actualizacion/access-control-module/authorizeUser.php', {
+         method: 'POST',
+         body: JSON.stringify(formDataObject),
+       });
+ 
+       response.json().then((r) => {
+         console.log(r);
+       });
+     }
+   }
+ 
+   customElements.define('x-form', CreateUserForm);
+ 
+   window.onload = () => {
+     let form = new CreateUserForm();
+     document.body.appendChild(form);
+   };
+ 
+ </script>
+ 
+ 
+ </script>
+ 
+ 
+   
+   
+
+</html>
