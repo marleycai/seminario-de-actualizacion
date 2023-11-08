@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mensajería App</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const body = document.body;
+
+    // Crear el encabezado
+    const header = document.createElement('header');
+    const h1 = document.createElement('h1');
+    h1.textContent = 'Bienvenido a la App de Mensajería';
+    header.appendChild(h1);
+
+    // Crear el formulario de inicio de sesión
+    const loginForm = document.createElement('div');
+    loginForm.id = 'login-form';
+    const h2LoginForm = document.createElement('h2');
+    h2LoginForm.textContent = 'Iniciar Sesión';
+    const form = document.createElement('form');
+    const usernameInput = document.createElement('input');
+    usernameInput.type = 'text';
+    usernameInput.id = 'username';
+    usernameInput.placeholder = 'Nombre de Usuario';
+    usernameInput.required = true;
+    const passwordInput = document.createElement('input');
+    passwordInput.type = 'password';
+    passwordInput.id = 'password';
+    passwordInput.placeholder = 'Contraseña';
+    passwordInput.required = true;
+    const submitButton = document.createElement('button');
+    submitButton.type = 'submit';
+    submitButton.textContent = 'Iniciar Sesión';
+    form.appendChild(usernameInput);
+    form.appendChild(passwordInput);
+    form.appendChild(submitButton);
+    loginForm.appendChild(h2LoginForm);
+    loginForm.appendChild(form);
+
+    // Crear el contenedor del chat
+    const chatContainer = document.createElement('div');
+    chatContainer.id = 'chat-container';
+    chatContainer.style.display = 'none';
+    const h2Chat = document.createElement('h2');
+    h2Chat.textContent = 'Chat';
+    const messageList = document.createElement('div');
+    messageList.id = 'message-list';
+    const messageInput = document.createElement('input');
+    messageInput.type = 'text';
+    messageInput.id = 'message';
+    messageInput.placeholder = 'Escribe tu mensaje...';
+    const sendMessageButton = document.createElement('button');
+    sendMessageButton.id = 'send-message';
+    sendMessageButton.textContent = 'Enviar';
+    chatContainer.appendChild(h2Chat);
+    chatContainer.appendChild(messageList);
+    chatContainer.appendChild(messageInput);
+    chatContainer.appendChild(sendMessageButton);
+
+    // Crear el formulario de registro
+    const registerForm = document.createElement('div');
+    registerForm.id = 'register-button';
+    const h2RegisterForm = document.createElement('h2');
+    h2RegisterForm.textContent = 'Registrarse';
+    const registerFormInner = document.createElement('form');
+    const registerUsernameInput = document.createElement('input');
+    registerUsernameInput.type = 'text';
+    registerUsernameInput.id = 'register-username';
+    registerUsernameInput.placeholder = 'Nombre de Usuario';
+    registerUsernameInput.required = true;
+    const registerPasswordInput = document.createElement('input');
+    registerPasswordInput.type = 'password';
+    registerPasswordInput.id = 'register-password';
+    registerPasswordInput.placeholder = 'Contraseña';
+    registerPasswordInput.required = true;
+    const registerButton = document.createElement('button');
+    registerButton.type = 'button';
+    registerButton.textContent = 'Registrarse';
+    registerFormInner.appendChild(registerUsernameInput);
+    registerFormInner.appendChild(registerPasswordInput);
+    registerFormInner.appendChild(registerButton);
+    registerForm.appendChild(h2RegisterForm);
+    registerForm.appendChild(registerFormInner);
+
+    // Agregar elementos al DOM
+    body.appendChild(header);
+    body.appendChild(chatContainer);
+    body.appendChild(loginForm);
+    body.appendChild(registerForm);
+
+    // Escuchar evento de enviar mensaje
+    const sendButton = document.getElementById('send-message');
+    sendButton.addEventListener('click', () => {
+      const message = document.getElementById('message').value;
+      console.log('Mensaje enviado:', message);
+
+      // Aquí puedes enviar el mensaje al servidor o hacer lo que necesites
+    });
+
+    // Evento para manejar el registro
+    registerButton.addEventListener('click', () => {
+      const registerUsername = document.getElementById('register-username').value;
+      const registerPassword = document.getElementById('register-password').value;
+
+      // Aquí puedes enviar los datos de registro al servidor para hacer la inserción en la base de datos
+      console.log('Registrando:', registerUsername, registerPassword);
+    });
+  });
+</script>
+
+<script src="script.js"></script>
+</body>
+</html>
